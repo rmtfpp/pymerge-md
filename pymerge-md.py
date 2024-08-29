@@ -59,7 +59,7 @@ def main():
     with open(markdown_indexfile_path, "r") as guide:
         guide_string = guide.read()
 
-        matches = re.findall(r"\[\[([A-Za-z0-9_ ]+)\]\]", guide_string)
+        matches = re.findall(r"\[\[([\w\sÀ-ÖØ-öø-ÿ']+)\]\]", guide_string)
 
     guide.close()
 
@@ -68,6 +68,7 @@ def main():
 
     for m in matches:
         m = m + ".md"
+        print(m)
         m_path = Path(os.path.join(path, "▫️ nts", m))
         if m_path.is_file():
             append_after_third_delimiter(m_path, filepath)
